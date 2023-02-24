@@ -1,0 +1,18 @@
+{
+    "name": "Lichess Cheat",
+    "version": "0.1",
+    "manifest_version": 3,
+    "description": "Get the best move for lichess.org",
+    "content_scripts": [
+        {
+            "matches": ["*://*.lichess.org/*"],
+            "js": ["js/pgn.js"]
+        }
+    ],
+    "icons": {
+        "16": "icon/knight.png",
+        "32": "icon/knight.png",
+        "48": "icon/knight.png",
+        "128": "icon/knight.png"
+    }
+}
