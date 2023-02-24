@@ -50,10 +50,6 @@ pyinstaller --onefile main.py
 
 <p>Running</p>
 
-```
 Add the folder as an extension on your browser
-```
 
-```
 Run main.exe
-```
