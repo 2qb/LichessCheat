@@ -14,13 +14,13 @@
 
 <h2>How to use</h2>
 
-<p>Python version</p>
+<p>- Python version</p>
 
 ```
 3.9.13
 ```
 
-<p>Installation</p>
+<p>- Installation</p>
 
 ```
 pip install chess
@@ -34,7 +34,7 @@ pip install Flask
 pip install Flask-Cors
 ```
 
-<p>If you want to build it yourself</p>
+<p>- If you want to build it yourself</p>
 
 ```
 pip install pyinstaller
@@ -44,11 +44,9 @@ pip install pyinstaller
 pyinstaller --onefile main.py
 ```
 
-```
 (Make sure the main.exe is in the project root!)
-```
 
-<p>Running</p>
+<p>- Running</p>
 
 Add the folder as an extension on your browser
 
