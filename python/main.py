@@ -1,13 +1,14 @@
 # 2qb
 import io
-import os
-import sys
 import logging
+import os
+import random
+import sys
+
 import chess.engine
 import chess.pgn
-
+from flask import Flask, request
 from flask_cors import CORS
-from flask import Flask, request, jsonify
 
 logging.disable(logging.CRITICAL)
 
@@ -16,13 +17,16 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 engine_dir = os.path.join(script_dir, "engine")
-engine_path = os.path.join(engine_dir, 'stockfish.exe')
+engine_path = os.path.join(engine_dir, 'Houdini.exe')
 
 engine = chess.engine.SimpleEngine.popen_uci(engine_path)
+
+print("Premium chess v2")
 
 
 @app.route('/moves', methods=['POST'])
 def handle_moves():
+    side = request.json['side']
     moves = request.json['moves']
     pgn = io.StringIO(moves)
     game = chess.pgn.read_game(pgn)
@@ -31,26 +35,22 @@ def handle_moves():
     for move in game.mainline_moves():
         board.push(move)
 
-    response = {}
-
     if board.is_game_over():
         result = board.result()
         print(result)
     else:
-        result = engine.play(board, chess.engine.Limit(time=0.25))
-        best_move = board.san(result.move)
+        if (board.turn == chess.WHITE and side == 1) or (board.turn == chess.BLACK and side == 0):
+            depth = random.randint(3, 5)
+            result = engine.play(board, chess.engine.Limit(depth=depth))
+            best_move = board.san(result.move)
+            best_move_py = result.move.uci()
 
-        if board.turn == chess.WHITE:
-            color = "White"
+            print(f"The best move is: {best_move}")
+            return best_move_py
         else:
-            color = "Black"
+            os.system('cls')
 
-        response = {
-            'best_move': best_move
-        }
-        print(f"The best move for {color} is: {best_move}")
-
-    return jsonify(response)
+    return "null"
 
 
 if __name__ == '__main__':
