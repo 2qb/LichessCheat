@@ -7,6 +7,7 @@ import sys
 
 import chess.engine
 import chess.pgn
+import chess.polyglot
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -17,7 +18,8 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 engine_dir = os.path.join(script_dir, "engine")
-engine_path = os.path.join(engine_dir, 'Houdini.exe')
+engine_path = os.path.join(engine_dir, 'engine.exe')
+book_path = os.path.join(engine_dir, "book.bin")
 
 engine = chess.engine.SimpleEngine.popen_uci(engine_path)
 
@@ -40,13 +42,22 @@ def handle_moves():
         print(result)
     else:
         if (board.turn == chess.WHITE and side == 1) or (board.turn == chess.BLACK and side == 0):
-            depth = random.randint(3, 5)
-            result = engine.play(board, chess.engine.Limit(depth=depth))
-            best_move = board.san(result.move)
-            best_move_py = result.move.uci()
+            try:
+                with chess.polyglot.open_reader(book_path) as book:
+                    entry = book.find(board)
+                    best_move = board.san(entry.move)
+                    best_move_py = entry.move.uci()
+                    print(f"The book recommends {best_move}")
+                    return best_move_py
 
-            print(f"The best move is: {best_move}")
-            return best_move_py
+            except (ValueError, IndexError):
+                depth = random.randint(2, 3)
+                result = engine.play(board, chess.engine.Limit(depth=depth))
+                best_move = board.san(result.move)
+                best_move_py = result.move.uci()
+                print(f"The best move is: {best_move}")
+                return best_move_py
+
         else:
             os.system('cls')
 
@@ -54,6 +65,6 @@ def handle_moves():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
 engine.quit()
