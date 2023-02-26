@@ -15,6 +15,7 @@ logging.disable(logging.CRITICAL)
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
+print("Premium chess v2")
 
 script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 engine_dir = os.path.join(script_dir, "engine")
@@ -22,8 +23,6 @@ engine_path = os.path.join(engine_dir, 'engine.exe')
 book_path = os.path.join(engine_dir, "book.bin")
 
 engine = chess.engine.SimpleEngine.popen_uci(engine_path)
-
-print("Premium chess v2")
 
 
 @app.route('/moves', methods=['POST'])
@@ -47,7 +46,7 @@ def handle_moves():
                     entry = book.find(board)
                     best_move = board.san(entry.move)
                     best_move_py = entry.move.uci()
-                    print(f"The book recommends {best_move}")
+                    print(f"The book recommends: {best_move}")
                     return best_move_py
 
             except (ValueError, IndexError):
@@ -55,7 +54,7 @@ def handle_moves():
                 result = engine.play(board, chess.engine.Limit(depth=depth))
                 best_move = board.san(result.move)
                 best_move_py = result.move.uci()
-                print(f"The best move is: {best_move}")
+                print(f"The engine recommends: {best_move}")
                 return best_move_py
 
         else:
@@ -65,6 +64,6 @@ def handle_moves():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 engine.quit()
