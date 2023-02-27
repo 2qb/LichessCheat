@@ -1,8 +1,8 @@
 {
-    "name": "Private",
-    "version": "0.2",
+    "name": "Chess",
+    "version": "2.1",
     "manifest_version": 3,
-    "description": "Premium cheat v2",
+    "description": "Premium cheat v2.1",
     "content_scripts": [
         {
             "matches": ["*://*.lichess.org/*"],
