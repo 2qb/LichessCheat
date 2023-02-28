@@ -54,6 +54,7 @@ Open `config.ini` to choose custom depth value (Static/Random).
 ## Custom engine/book
 
 To change the engine, simply download the engine of your choosing (that supports books), put it in `./engine` and rename it to `engine.exe`
+<br />
 To change the theory book, download a book of your choosing, put it in `./engine` and rename it to `book.bin`
 
 
