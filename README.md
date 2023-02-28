@@ -6,7 +6,7 @@
 <h3 align="center">A Chess Cheat</h3>
 
   <p align="center">
-    Visual cheat made for chess. [v2.1]
+    Visual cheat made for chess. [v3.0]
   </p>
 </div>
 <br>
@@ -34,6 +34,11 @@ To get the cheat running:
 3. Run main.exe
 4. Start a game of chess and have fun
 
+## IMPORTANT
+
+To use on `Chess.com` make sure to put `Piece notation` to `text` for the bot to work correctly.
+Open `config.ini` to choose custom depth value (Static/Random).
+
 ## Features:
 
 ### v3:
@@ -50,10 +55,6 @@ To get the cheat running:
 To change the engine, simply download the engine of your choosing (that supports books), put it in `./engine` and rename it to `engine.exe`
 To change the theory book, download a book of your choosing, put it in `./engine` and rename it to `book.bin`
 
-## IMPORTANT
-
-To use on `Chess.com` make sure to put `Piece notation` to `text` for the bot to work correctly.
-Open `config.ini` to choose custom depth value (Static/Random).
 
 ## Building
 
