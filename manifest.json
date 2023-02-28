@@ -1,13 +1,17 @@
 {
     "name": "Chess",
-    "version": "2.1",
+    "version": "3.0",
     "manifest_version": 3,
-    "description": "Premium cheat v2.1",
+    "description": "Premium cheat v3.0",
     "content_scripts": [
         {
             "matches": ["*://*.lichess.org/*"],
-            "js": ["js/pgn.js"]
-        }
+            "js": ["js/lichess.js"]
+        },
+		{
+			"matches": ["*://*.chess.com/*"],
+			"js": ["js/chess.js"]
+		}
     ],
     "icons": {
         "16": "icon/knight.png",

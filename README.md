@@ -36,17 +36,24 @@ To get the cheat running:
 
 ## Features:
 
-* Lichess support
+### v3:
+* Lichess.org support
+* Chess.com support
 * Fast calculation
 * Custom opening theory book support
 * Custom engine support
-* Current depth is 2-3 randomized to look more legit
+* Configurable depth (Static and Random)
+* Different color for theory/engine moves
 
 ## Custom engine/book
 
 To change the engine, simply download the engine of your choosing (that supports books), put it in `./engine` and rename it to `engine.exe`
 To change the theory book, download a book of your choosing, put it in `./engine` and rename it to `book.bin`
 
+## IMPORTANT
+
+To use on `Chess.com` make sure to put `Piece notation` to `text` for the bot to work correctly.
+Open `config.ini` to choose custom depth value (Static/Random).
 
 ## Building
 
@@ -57,6 +64,7 @@ To build the project yourself you need:
   pip install chess
   pip install flask
   pip install flask-cors
+  pip install configparser
   ```
 
 * Pyinstaller for building
@@ -72,18 +80,6 @@ To build the project yourself you need:
 
 Note: Make sure to put the main.exe in the project root!
 
-
-## Upcoming update
-
-### v3:
-* Chess.com support
-* Different arrow colors for theory/engine moves
-* Customizable depth (Static and Random)
-
-Feel free to send suggestions to my Discord.
-
-
-<!-- CONTACT -->
 ## Contact
 
 If you need any help feel free to contact me at:

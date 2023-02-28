@@ -1,4 +1,9 @@
 # 2qb
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+import configparser
+
 import io
 import logging
 import os
@@ -8,14 +13,12 @@ import sys
 import chess.engine
 import chess.pgn
 import chess.polyglot
-from flask import Flask, request
-from flask_cors import CORS
 
 logging.disable(logging.CRITICAL)
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
-print("Premium chess v2")
+print("--------------------\nPremium chess v3\n--------------------\n")
 
 script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 engine_dir = os.path.join(script_dir, "engine")
@@ -23,6 +26,31 @@ engine_path = os.path.join(engine_dir, 'engine.exe')
 book_path = os.path.join(engine_dir, "book.bin")
 
 engine = chess.engine.SimpleEngine.popen_uci(engine_path)
+
+config = configparser.ConfigParser()
+config.read("config.ini")
+random_depth_string = config.get("config", "randomized_depth")
+static_depth_string = config.get("config", "static_depth")
+depth_min_string = config.get("config", "random_depth_min")
+depth_max_string = config.get("config", "random_depth_max")
+
+if random_depth_string.lower() == "true":
+    random_depth = True
+elif random_depth_string.lower() == "false":
+    random_depth = False
+else:
+    random_depth = False
+
+depth_min = int(depth_min_string)
+depth_max = int(depth_max_string)
+static_depth = int(static_depth_string)
+
+if random_depth:
+    print(f"Current depth is: RANDOMIZED")
+    print(f"Depth: \n min: {depth_min}\n max: {depth_max}\n")
+else:
+    print(f"Current depth is: STATIC")
+    print(f"Depth: {static_depth}\n")
 
 
 @app.route('/moves', methods=['POST'])
@@ -46,17 +74,27 @@ def handle_moves():
                     entry = book.find(board)
                     best_move = board.san(entry.move)
                     best_move_py = entry.move.uci()
+                    engine_move = False
+                    os.system('cls')
                     print(f"The book recommends: {best_move}")
-                    return best_move_py
-
+                    return jsonify(
+                        engine_move=engine_move,
+                        best_move_py=best_move_py
+                    )
             except (ValueError, IndexError):
-                depth = random.randint(2, 3)
-                result = engine.play(board, chess.engine.Limit(depth=depth))
+                if random_depth:
+                    result = engine.play(board, chess.engine.Limit(depth=random.randint(depth_min, depth_max)))
+                else:
+                    result = engine.play(board, chess.engine.Limit(depth=static_depth))
                 best_move = board.san(result.move)
                 best_move_py = result.move.uci()
+                engine_move = True
+                os.system('cls')
                 print(f"The engine recommends: {best_move}")
-                return best_move_py
-
+                return jsonify(
+                    engine_move=engine_move,
+                    best_move_py=best_move_py
+                )
         else:
             os.system('cls')
 
