@@ -37,6 +37,7 @@ To get the cheat running:
 ## IMPORTANT
 
 To use on `Chess.com` make sure to put `Piece notation` to `text` for the bot to work correctly.
+<br />
 Open `config.ini` to choose custom depth value (Static/Random).
 
 ## Features:
