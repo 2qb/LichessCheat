@@ -77,7 +77,7 @@ Note: Make sure to put the main.exe in the project root!
 
 ### v3:
 * Chess.com support
-* Different arrow colors for theory/engine moves (maybe)
+* Different arrow colors for theory/engine moves
 * Customizable depth (Static and Random)
 
 Feel free to send suggestions to my Discord.
