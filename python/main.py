@@ -72,11 +72,8 @@ def handle_moves():
             try:
                 with chess.polyglot.open_reader(book_path) as book:
                     entry = book.find(board)
-                    best_move = board.san(entry.move)
                     best_move_py = entry.move.uci()
                     engine_move = False
-                    os.system('cls')
-                    print(f"The book recommends: {best_move}")
                     return jsonify(
                         engine_move=engine_move,
                         best_move_py=best_move_py
@@ -86,17 +83,12 @@ def handle_moves():
                     result = engine.play(board, chess.engine.Limit(depth=random.randint(depth_min, depth_max)))
                 else:
                     result = engine.play(board, chess.engine.Limit(depth=static_depth))
-                best_move = board.san(result.move)
                 best_move_py = result.move.uci()
                 engine_move = True
-                os.system('cls')
-                print(f"The engine recommends: {best_move}")
                 return jsonify(
                     engine_move=engine_move,
                     best_move_py=best_move_py
                 )
-        else:
-            os.system('cls')
 
     return "null"
 
