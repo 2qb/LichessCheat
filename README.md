@@ -16,7 +16,7 @@
 
 ![Screenshot](https://user-images.githubusercontent.com/68710010/221585277-bdaf19c2-c399-491e-9771-53dad8e714cb.png)
 
-A Public Chess Cheat that helps you play by showing the best move on screen.
+A Chess Cheat that helps you play by showing the best move on screen.
 
 
 ## Built With
