@@ -6,7 +6,7 @@
 <h3 align="center">A Chess Cheat</h3>
 
   <p align="center">
-    Visual cheat made for chess. [v2.1]
+    Visual cheat made for chess. [v3.0]
   </p>
 </div>
 <br>
@@ -16,7 +16,7 @@
 
 ![Screenshot](https://user-images.githubusercontent.com/68710010/221585277-bdaf19c2-c399-491e-9771-53dad8e714cb.png)
 
-A formerly private Chess Cheat that helps you play by showing the best move on screen.
+A Chess Cheat that helps you play by showing the best move on screen.
 
 
 ## Built With
@@ -34,6 +34,12 @@ To get the cheat running:
 3. Run main.exe
 4. Start a game of chess and have fun
 
+## IMPORTANT
+
+To use on `Chess.com` make sure to put `Piece notation` to `text` for the bot to work correctly.
+<br />
+Open `config.ini` to choose custom depth value (Static/Random).
+
 ## Features:
 
 ### v3:
@@ -48,12 +54,9 @@ To get the cheat running:
 ## Custom engine/book
 
 To change the engine, simply download the engine of your choosing (that supports books), put it in `./engine` and rename it to `engine.exe`
+<br />
 To change the theory book, download a book of your choosing, put it in `./engine` and rename it to `book.bin`
 
-## IMPORTANT
-
-To use on `Chess.com` make sure to put `Piece notation` to `text` for the bot to work correctly.
-Open `config.ini` to choose custom depth value (Static/Random).
 
 ## Building
 
