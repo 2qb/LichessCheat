@@ -2,6 +2,52 @@
 
 let bestmove, enginemove;
 
+let showmoves = true;
+
+if (showmoves) {
+	SendMovesToServer();
+	addP('ON');
+} else {
+	addP('OFF');
+}
+
+function addP(ptext){
+  const status = document.createElement('status');
+  const text = document.createTextNode(ptext);
+  status.appendChild(text);
+  document.body.appendChild(status);
+
+  status.id = 'status';
+  status.style.position = 'fixed';
+  status.style.bottom = '0';
+  status.style.left = '50%';
+  status.style.transform = 'translateX(-50%)';
+  status.style.fontSize = '2em';
+  status.style.textAlign = 'center';
+  status.style.color = 'green';
+}
+
+function removeP(){
+	let p = document.getElementById('status');
+	if (p) p.remove();
+}	
+
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'ShiftRight') {
+    showmoves = !showmoves;
+	if (!showmoves) {
+		let arrow = document.getElementById('py-overlay');
+		if (arrow) arrow.remove();
+		removeP();
+		addP('OFF');
+	} else {
+		SendMovesToServer();
+		removeP();
+		addP('ON');
+	}
+  }
+});
+
 function GetLichessMoves() {
 	let movesTag = document.querySelectorAll("kwdb");
 	let moveList = Array.from(movesTag).map((element, index) => {
@@ -201,7 +247,7 @@ const observer = new MutationObserver((mutationsList) => {
 			let removedNodes = Array.from(mutation.removedNodes);
 			let changedNodes = addedNodes.concat(removedNodes).filter(node => node.tagName === 'KWDB');
 			if (changedNodes.length > 0) {
-				SendMovesToServer();
+				if (showmoves) SendMovesToServer();
 				break;
 			}
 		}

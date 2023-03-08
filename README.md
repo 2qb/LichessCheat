@@ -50,6 +50,7 @@ Open `config.ini` to choose custom depth value (Static/Random).
 * Custom engine support
 * Configurable depth (Static and Random)
 * Different color for theory/engine moves
+* Right shift to toggle ON/OFF
 
 ## Custom engine/book
 
