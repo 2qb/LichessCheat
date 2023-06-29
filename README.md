@@ -88,4 +88,4 @@ Note: Make sure to put the main.exe in the project root!
 
 If you need any help feel free to contact me at:
 
-Discord - `the#9240`
+Discord - `the9240`
