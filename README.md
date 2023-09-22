@@ -43,7 +43,7 @@ Open `config.ini` to choose custom depth value (Static/Random).
 ## Features:
 
 ### v3:
-* Lichess.org support
+* Lichess.org support [DETECTED]
 * Chess.com support
 * Fast calculation
 * Custom opening theory book support
