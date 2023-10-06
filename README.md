@@ -8,6 +8,9 @@
   <p align="center">
     Visual cheat made for chess. [v3.0]
   </p>
+  <p align="center">
+    OUTDATED (does not work)
+  </p>
 </div>
 <br>
 
