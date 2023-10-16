@@ -49,7 +49,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 function GetChessMoves() {
-	const moveList = document.querySelector('vertical-move-list');
+	const moveList = document.querySelector('wc-vertical-move-list');
 	if (!moveList) return '';
 	const moves = moveList.querySelectorAll('.move');
 	if (!moves.length) return '';
@@ -254,7 +254,7 @@ function SendMovesToServer() {
 
 const observer = new MutationObserver((mutationsList) => {
 	for (let mutation of mutationsList) {
-	  if (mutation.target.nodeName === 'VERTICAL-MOVE-LIST') {
+	  if (mutation.target.nodeName === 'WC-VERTICAL-MOVE-LIST') {
 		const changedNodes = Array.from(mutation.target.querySelectorAll('.move'));
 		if (changedNodes.length > 0) {
 		  if (showmoves) SendMovesToServer();

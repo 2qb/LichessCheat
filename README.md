@@ -8,9 +8,6 @@
   <p align="center">
     Visual cheat made for chess. [v3.0]
   </p>
-  <p align="center">
-    OUTDATED (does not work)
-  </p>
 </div>
 <br>
 
@@ -42,6 +39,12 @@ To get the cheat running:
 To use on `Chess.com` make sure to put `Piece notation` to `text` for the bot to work correctly.
 <br />
 Open `config.ini` to choose custom depth value (Static/Random).
+
+-----
+
+To use on `Lichess.org` make sure to put `Board coordinates (A-H, 1-8)` to `Outside the board`, as well as `Move notation` to `Letter` in Preferences > Display.
+As of now, it seems to be DETECTED on lichess, so use it at your own risk!
+
 
 ## Features:
 
