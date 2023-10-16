@@ -42,8 +42,11 @@ Open `config.ini` to choose custom depth value (Static/Random).
 
 -----
 
-To use on `Lichess.org` make sure to put `Board coordinates (A-H, 1-8)` to `Outside the board`, as well as `Move notation` to `Letter` in Preferences > Display.
-As of now, it seems to be DETECTED on lichess, so use it at your own risk!
+To use on `Lichess.org` make sure to put `Board coordinates (A-H, 1-8)` to `Outside the board`,
+
+as well as `Move notation` to `Letter` in Preferences > Display.
+
+**As of now, it seems to be DETECTED on lichess, so use it at your own risk!**
 
 
 ## Features:
