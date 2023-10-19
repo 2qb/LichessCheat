@@ -97,4 +97,4 @@ Note: Make sure to put the main.exe in the project root!
 
 If you need any help feel free to contact me at:
 
-Discord - `the9240`
+Discord - `2qb_`
