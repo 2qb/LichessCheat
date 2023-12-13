@@ -92,9 +92,3 @@ To build the project yourself you need:
   ```
 
 Note: Make sure to put the main.exe in the project root!
-
-## Contact
-
-If you need any help feel free to contact me at:
-
-Discord - `2qb_`
